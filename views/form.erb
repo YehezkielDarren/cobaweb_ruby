@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Registrasi Mahasiswa</title>
+  <link rel="stylesheet" href="public/style.css">
+</head>
+<body>
+  <h2>Form Registrasi Mahasiswa</h2>
+  <form action="/register" method="post">
+    <label>Nama:</label><br>
+    <input type="text" name="nama" required><br>
+    <label>NIM:</label><br>
+    <input type="text" name="nim" required><br>
+    <label>Password:</label><br>
+    <input type="password" name="password" required><br><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <h3>Data Mahasiswa Terdaftar</h3>
+  <table>
+    <tr>
+      <th>No</th>
+      <th>Nama</th>
+      <th>NIM</th>
+      <th>Password</th>
+    </tr>
+    <% mahasiswa_list.each_with_index do |mhs, idx| %>
+      <tr>
+        <td><%= idx + 1 %></td>
+        <td><%= mhs[:nama] %></td>
+        <td><%= mhs[:nim] %></td>
+        <td><%= mhs[:password] %></td>
+      </tr>
+    <% end %>
+  </table>
+</body>
+</html>
