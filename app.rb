@@ -3,18 +3,19 @@ require 'erb'
 
 set :bind, '0.0.0.0'
 set :port, 4567
-
-# Data mahasiswa akan disimpan di memori sementara
-mahasiswa_list = []
+set :public_folder, File.dirname(__FILE__) + '/public'
+pesan=""
 
 get '/' do
-  erb :form, locals: { mahasiswa_list: mahasiswa_list }
+  pesan=params['pesan']
+  erb :form, locals: { pesan: pesan }
 end
 
 post '/register' do
-  nama = params['nama']
-  nim = params['nim']
-  password = params['password']
-  mahasiswa_list << { nama: nama, nim: nim, password: password }
-  erb :form, locals: { mahasiswa_list: mahasiswa_list }
+  # logika validasi...
+  if params['username'] == 'admin' and params['password']="admin123"
+    redirect to('/?pesan=Username+admin+sudah+terdaftar.')
+  else
+    redirect to('/?pesan=Gagal+login+dengan+akun+' + params['username'])
+  end
 end

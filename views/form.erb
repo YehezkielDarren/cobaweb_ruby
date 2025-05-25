@@ -1,38 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Registrasi Mahasiswa</title>
-  <link rel="stylesheet" href="public/style.css">
+  <title>Login</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/time.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/LogoHeader1.png"/>
+  <script src="/script.js"></script>
+  <script src="/time.js"></script>
 </head>
 <body>
-  <h2>Form Registrasi Mahasiswa</h2>
-  <form action="/register" method="post">
-    <label>Nama:</label><br>
-    <input type="text" name="nama" required><br>
-    <label>NIM:</label><br>
-    <input type="text" name="nim" required><br>
-    <label>Password:</label><br>
-    <input type="password" name="password" required><br><br>
-    <button type="submit">Submit</button>
-  </form>
+  <header>
+    <div class="logo">
+    <img src="/LogoHeader1.png" alt="logokerja" />
+    <a>Cari Kerja. <span class="small">com</span></a>
+    </div>
+  </header>
+  <main>
+    <div class="wrapper">
+      <% if defined?(pesan) && pesan && !pesan.empty? %>
+        <div class="alert alert-danger" id="errorMsg" style="display: block;">
+        <%= pesan %>
+        </div>
+      <% end %>
 
-  <h3>Data Mahasiswa Terdaftar</h3>
-  <table>
-    <tr>
-      <th>No</th>
-      <th>Nama</th>
-      <th>NIM</th>
-      <th>Password</th>
-    </tr>
-    <% mahasiswa_list.each_with_index do |mhs, idx| %>
-      <tr>
-        <td><%= idx + 1 %></td>
-        <td><%= mhs[:nama] %></td>
-        <td><%= mhs[:nim] %></td>
-        <td><%= mhs[:password] %></td>
-      </tr>
-    <% end %>
-  </table>
+      <form action="/register" method="post">
+        <h1>Login</h1>
+
+        <div class="input-box">
+          <input type="text" name="username" id="username" placeholder="Username">
+          <i class='bx bx-user'></i>
+        </div>
+
+        <div class="input-box">
+          <input type="password" name="password" id="password" placeholder="Password">
+          <i class='bx bx-show toggle-password' onclick="showPassword()"></i>
+        </div>
+
+        <button type="submit" class="btn">Login</button>
+      </form>
+    </div>
+  </main>
+  <div class="clock-container">
+    <div class="clock-time" id="clock">00:00:00</div>
+    <div class="clock-date" id="date">Loading date...</div>
+  </div>
 </body>
 </html>
