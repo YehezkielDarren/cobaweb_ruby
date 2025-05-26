@@ -35,8 +35,7 @@
         <%# Memanggil partial untuk input password %>
         <%# Untuk partial _input_field.erb, pastikan icon_class menyertakan 'toggle-password' jika diperlukan %>
         <%# dan tambahkan onclick="showPassword()" jika fungsi tersebut masih relevan untuk ikon di dalam partial %>
-        <%= erb :_input_field, locals: { type: "password", name: "password", placeholder: "Password", icon_class: "bx-show toggle-password" } %>
-        <%# Jika ikon di partial perlu onclick: <i class='bx <%= icon_class %> <%= defined?(onclick_event) ? "onclick=\"#{onclick_event}\"" : "" %> </i>
+        <%= erb :_input_field, locals: { type: "password", name: "password", placeholder: "Password", icon_class: "bx-show toggle-password", onclick_event:"showPassword()" } %>
 
         <button type="submit" class="btn">Login</button>
       </form>

@@ -5,6 +5,7 @@ set :bind, '0.0.0.0'
 set :port, 4567
 set :public_folder, File.join(File.dirname(__FILE__), 'public')
 
+# Menggunakan helper untuk membuat komponen alert
 helpers do
   def alert_component(message, type = "info")
     # type bisa "success", "danger", "warning", "info"
