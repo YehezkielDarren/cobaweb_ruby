@@ -1,0 +1,5 @@
+<%# views/_input_field.erb %>
+<div class="input-box">
+  <input type="<%= type %>" name="<%= name %>" id="<%= name %>" placeholder="<%= placeholder %>" <%= defined?(required) && required ? 'required' : '' %>>
+  <i class='bx <%= icon_class %>' <%= defined?(onclick_event) && onclick_event ? "onclick='#{onclick_event}'" : "" %>></i>
+</div>

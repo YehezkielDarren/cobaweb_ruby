@@ -20,28 +20,23 @@
   <main>
     <div class="wrapper">
       <% if defined?(pesan_gagal) && pesan_gagal && !pesan_gagal.empty? %>
-        <div class="alert alert-danger" id="errorMsg" style="display: block;">
-        <%= pesan_gagal %>
-        </div>
+        <%= alert_component(pesan_gagal, "danger") %>
       <% end %>
       <% if defined?(pesan_sukses) && pesan_sukses && !pesan_sukses.empty?%>
-        <div class="alert alert-success" id="successMsg" style="display: block;">
-        <%= pesan_sukses %>
-        </div>
+        <%= alert_component(pesan_sukses, "success") %>
       <% end %>
 
-      <form action="/register" method="post">
+      <form action="/login" method="post">
         <h1>Login</h1>
 
-        <div class="input-box">
-          <input type="text" name="username" id="username" placeholder="Username">
-          <i class='bx bx-user'></i>
-        </div>
+        <%# Memanggil partial untuk input username %>
+        <%= erb :_input_field, locals: { type: "text", name: "username", placeholder: "Username", icon_class: "bx-user", required: true } %>
 
-        <div class="input-box">
-          <input type="password" name="password" id="password" placeholder="Password">
-          <i class='bx bx-show toggle-password' onclick="showPassword()"></i>
-        </div>
+        <%# Memanggil partial untuk input password %>
+        <%# Untuk partial _input_field.erb, pastikan icon_class menyertakan 'toggle-password' jika diperlukan %>
+        <%# dan tambahkan onclick="showPassword()" jika fungsi tersebut masih relevan untuk ikon di dalam partial %>
+        <%= erb :_input_field, locals: { type: "password", name: "password", placeholder: "Password", icon_class: "bx-show toggle-password" } %>
+        <%# Jika ikon di partial perlu onclick: <i class='bx <%= icon_class %> <%= defined?(onclick_event) ? "onclick=\"#{onclick_event}\"" : "" %> </i>
 
         <button type="submit" class="btn">Login</button>
       </form>

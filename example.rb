@@ -28,23 +28,55 @@ greet("Alice")
 
 # You can also define classes in Ruby
 class Person
-  attr_accessor :name
-  attr_accessor :age
+  attr_accessor :name # Define an attribute accessor for name
+  attr_accessor :age # Define an attribute accessor for age
+  def age=(age) # Setter method for age
+    @age = age
+  end
+
+  def age # Getter method for age
+    @age
+  end
+  def name=(name) # Setter method for name
+    @name = name
+  end
+
+  def name # Getter method for name
+    @name
+  end
 
   def initialize(name,age) # Initialize method
     @name = name
     @age = age
   end
 
+  def initialize(name) # Overloaded initialize method
+    @name = name
+    @age = 0 # Default age if not provided
+  end
+
+  def initialize()
+    @name = "Unknown"
+    @age = 0
+  end
+
   def introduce
     puts "Hi, my name is #{@name}."
+  end
+
+  def tranversing_name()
+    @name.each_char do |char|
+      puts char
+    end
   end
 end
 
 # Create an instance of the Person class
-person = Person.new("Bob")
-# Call the introduce method
-person.introduce
+bob = Person.new("Bob")
+bob.introduce
+
+
+
 
 # Ruby supports blocks and iterators
 [1, 2, 3].each do |number|
