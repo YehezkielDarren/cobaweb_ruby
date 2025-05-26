@@ -14,8 +14,8 @@ end
 post '/register' do
   # logika validasi...
   if params['username'] == 'admin' and params['password']="admin123"
-    redirect to('/?pesan=Username+admin+sudah+terdaftar.')
+    redirect to('/?pesan_sukses=Username+admin+sudah+terdaftar.')
   else
-    redirect to('/?pesan=Gagal+login+dengan+akun+' + params['username'])
+    redirect to('/?pesan_gagal=Gagal+login+dengan+akun+' + params['username'])
   end
 end
